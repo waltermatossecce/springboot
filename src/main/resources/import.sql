@@ -1,0 +1,12 @@
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("walter","matos","waltermatos@gmail.com",21,"M","2020-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("marco","matos","marcomatos@gmail.com",21,"M","2023-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("kevin","matos","kevinmatos@gmail.com",21,"M","2020-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("victor","matos","victormatos@gmail.com",21,"M","2020-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("milagros","granda","milagrosgranda@gmail.com",21,"F","2020-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("Akemi","higa","akemihiga@gmail.com",21,"F","2020-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("Carlos","vera","carlosvera@gmail.com",21,"M","2020-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("Richard","saavedra","richardsaavedra@gmail.com",21,"M","2020-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("Brandon","villegaws","brandonvillegas@gmail.com",21,"M","2020-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("diana","clemente","dianaclemente@gmail.com",21,"M","2020-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("jesus","matos","jesusmatos@gmail.com",21,"M","2020-03-25");
+INSERT INTO alumno (nombre,apellido,correo,edad,sexo,create_at) VALUES ("catalina","zalazar","catalina@gmail.com",21,"F","2020-03-25");

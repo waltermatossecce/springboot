@@ -79,23 +79,6 @@ public class AlumnoRestController {
 		response.put("alumno", nuevoalumno);
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 		
-//		Alumno nuevoAlumno =null;
-//		Map<String, Object>response=new HashMap<>();
-//		try {
-//			
-//			nuevoAlumno=alumnoService.save(alumno);
-//			
-//		} catch (DataAccessException e) {
-//			// TODO: handle exception
-//			response.put("mensaje", "Error al hacer un insert en la base de datos");
-//			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-//			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//		
-//		response.put("mensaje", "El cliente se ha creado con éxito!");
-//		response.put("alumno", nuevoAlumno);
-//
-//		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 	}
 	@PutMapping("/clientes/{id}")
 	public ResponseEntity<?> update(@RequestBody Alumno alumno,@PathVariable Long id) {

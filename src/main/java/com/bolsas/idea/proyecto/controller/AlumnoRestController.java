@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.loader.custom.ResultRowProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -39,48 +40,62 @@ public class AlumnoRestController {
 	@GetMapping("/clientes/{id}")
 	public ResponseEntity<?> show(@PathVariable Long id) {
 		
-		Alumno alumno=null;
-		//mapa una coleccion objeto o valores
-		Map<String, Object>resultado=new HashMap<>();
 		
+		Alumno alumno = null;
+
+		Map<String,Object>resultado=new HashMap<>();
 		try {
-			alumno=alumnoService.findById(id);	
-			
+         alumno= alumnoService.findById(id);
 		} catch (DataAccessException e) {
 			// TODO: handle exception
-			resultado.put("mensaje", "Error al realizar la consulta en la base de datos");
-            resultado.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-		    return new ResponseEntity<Map<String, Object>>(resultado,HttpStatus.INTERNAL_SERVER_ERROR);
+		  resultado.put("mensaje", "Error al hacer una consulta en la base de datos");
+		  resultado.put("error",e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+		  return new ResponseEntity<Map<String,Object>>(resultado,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		if(alumno==null) {
-			resultado.put("mensaje", "El cliente el ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
-		    return new ResponseEntity<Map<String, Object>>(resultado,HttpStatus.NOT_FOUND);
+		if (alumno==null) {
+			resultado.put("mensaje", "El cliente ID: ".concat(id.toString().concat(" no éxiste en la base de datos!")));
+			return new ResponseEntity<Map<String,Object>>(resultado,HttpStatus.NOT_FOUND);
 		}
-		
-		
 		return new ResponseEntity<Alumno>(alumno,HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/clientes")
 	public ResponseEntity<?> create(@RequestBody Alumno alumno) {
 		
-		Alumno nuevoAlumno =null;
+		
+		Alumno nuevoalumno=null;
 		Map<String, Object>response=new HashMap<>();
+		
+		
 		try {
-			
-			nuevoAlumno=alumnoService.save(alumno);
-			
+			nuevoalumno=alumnoService.save(alumno);
 		} catch (DataAccessException e) {
 			// TODO: handle exception
 			response.put("mensaje", "Error al hacer un insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		    return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
 		}
-		
-		response.put("mensaje", "El cliente se ha creado con éxito!");
-		response.put("alumno", nuevoAlumno);
-
+		response.put("mensaje", "El alumno se ha creado con éxito!");
+		response.put("alumno", nuevoalumno);
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
+		
+//		Alumno nuevoAlumno =null;
+//		Map<String, Object>response=new HashMap<>();
+//		try {
+//			
+//			nuevoAlumno=alumnoService.save(alumno);
+//			
+//		} catch (DataAccessException e) {
+//			// TODO: handle exception
+//			response.put("mensaje", "Error al hacer un insert en la base de datos");
+//			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+//			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//		
+//		response.put("mensaje", "El cliente se ha creado con éxito!");
+//		response.put("alumno", nuevoAlumno);
+//
+//		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 	}
 	@PutMapping("/clientes/{id}")
 	public ResponseEntity<?> update(@RequestBody Alumno alumno,@PathVariable Long id) {
